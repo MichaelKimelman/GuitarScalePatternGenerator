@@ -1,0 +1,46 @@
+﻿<Window x:Class="_1_utkast_SKALA_GENERATOR.LoadScaleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_1_utkast_SKALA_GENERATOR"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="LoadScaleWindow" Height="450" Width="220">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+       
+        <ListBox Width="180" x:Name="SavedPositionsListBox" HorizontalAlignment="Center"  >
+            <!--<ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Fill="{Binding Background}" Width="16" Height="16" Margin="0,2,5,2" />
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>-->
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel >
+                        <Rectangle />
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Positions}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            
+        </ListBox>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Click="LoadPosition_Click" Grid.Column="1" Margin="-30, 0, 0, 0" Width="70" Height="30" >Load</Button>
+        </Grid>
+        
+        
+    </Grid>
+</Window>

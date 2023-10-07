@@ -1,0 +1,456 @@
+﻿<Window x:Class="_1_utkast_SKALA_GENERATOR.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_1_utkast_SKALA_GENERATOR"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="Scale Generator" MinWidth="1700" MinHeight="700" MaxWidth="1900" MaxHeight="900" >
+
+    <Grid x:Name="WindowGrid" >
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"  />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+        <!--<Menu  Grid.ColumnSpan="4">
+            <MenuItem Header="File" >
+                <MenuItem />
+                <MenuItem />
+            </MenuItem>
+        </Menu>-->
+        <!--<Button Grid.Row="0"  Height="30" Width="30" HorizontalAlignment="Left"/>-->
+
+        <StackPanel Margin="10, 0, 0, 0" Grid.Row="1" Grid.ColumnSpan="2"  >
+
+
+
+            <Label HorizontalAlignment="Left" >Positions</Label>
+            <StackPanel x:Name="toggleButtonStackPanel" Margin="0, 10" HorizontalAlignment="Left" Orientation="Horizontal" x:FieldModifier="public">
+                <StackPanel.Resources>
+
+                    <ControlTemplate x:Key="positionButton" TargetType="ToggleButton" >
+                        <Grid>
+                            <Rectangle Fill="{TemplateBinding Background}" Stroke="{TemplateBinding Foreground}" />
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+
+                    
+                    
+                    <Style TargetType="ToggleButton" >
+                        <Setter Property="Margin" Value=" 0, 0, 10, 0" />
+                        <Setter Property="Template"  Value="{StaticResource positionButton}" />
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property = "Background" Value="Green"/>
+                                <Setter Property="Background" Value="Green" />
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="true" />
+                                    <Condition Property="IsChecked" Value="false" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" Value="LightBlue" />
+                            </MultiTrigger>
+
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="true" />
+                                    <Condition Property="IsChecked" Value="true" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" Value="Red" />
+                            </MultiTrigger>
+                            <!--<Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property = "Background" Value="LightBlue"/>
+                                -->
+                            <!--<Setter Property="Foreground" Value="Red" />-->
+                            <!--
+                            </Trigger>-->
+                        </Style.Triggers>
+                        
+
+                    </Style>
+
+                    <Style BasedOn="{StaticResource {x:Type ToggleButton }}" x:Key="rootNoteStyle" TargetType="ToggleButton" >
+                        <Setter Property="Background" Value="Green" />
+                        <Setter Property="Margin" Value="0, 0, 10 , 0" />
+                        <Setter Property="IsChecked" Value="True" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                            </Trigger>
+                        </Style.Triggers>
+
+                    </Style>
+
+
+                </StackPanel.Resources>
+
+                <ToggleButton Style="{StaticResource rootNoteStyle}" Height="30" Width="30" x:Name="positionOne" >R</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionTwo" >2</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionThree" >3</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionFour" >4</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionFive" >5</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionSix" >6</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionSeven" >7</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionEight" >8</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionNine" >9</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionTen" >10</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionEleven" >11</ToggleButton>
+                <ToggleButton Click="positionToggleButton_Click" Height="30" Width="30" x:Name="positionTwelve" >12</ToggleButton>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+
+                <StackPanel.Resources>
+                    <Style TargetType="Button" >
+                        <Setter Property="Margin" Value=" 0, 0, 10, 0" />
+                        <Setter Property="Height" Value="30" />
+                        <Setter Property="Width" Value="70" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <Button Click="Reset_Click" >Reset</Button>
+                <Button Click="RandomizePositions_Click" >Randomize</Button>
+                <Button Click="SavePositions_Click" Width="110">Save Positions</Button>
+                <Button Click="LoadPositions_Click" Width="110">Load Positions</Button>
+                <Button Click="ChangeToggleButtonDisplay_Click" > See Notes</Button>
+                <!--<ComboBox SelectionChanged="LoadPositions_SelectionChanged" x:Name="SavedPositionsComboBox" Width="150" Height="20" SelectedIndex="0" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding Background}" Width="16" Height="16" Margin="0,2,5,2" />
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>-->
+
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel  Grid.Column="2" Grid.Row="1" >
+            <Label Margin=" 0, 20, 0, 0" >Tunings</Label>
+
+            <ComboBox SelectionChanged="tuningDropdown_SelectionChanged" x:Name="tuningsComboBox" Margin=" 0, 0, 20 ,0" SelectedIndex="0" Height="20"  >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Fill="{Binding Background}" Width="16" Height="16" Margin="0,2,5,2" />
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+            </ComboBox>
+            
+            <Button Click="AddTuning_Click" Content="Add Tuning" HorizontalAlignment="Right" Margin=" 0, 60,20, 0" Height="30" Width="70" />
+        </StackPanel>
+
+        <StackPanel  Grid.Column="3" Grid.Row="1" >
+            <Label Margin=" 0, 20, 0, 0" >Root Note</Label>
+            <ComboBox SelectionChanged="keyNoteComboBox_SelectionChanged"  x:Name="keyNoteComboBox" Margin=" 0, 0, 20 ,0" SelectedIndex="0" Height="20"  >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Fill="{Binding Background}" Width="16" Height="16" Margin="0,2,5,2" />
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            
+        </StackPanel>
+
+        <Grid Height="500" Width="1700" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="4" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+        <Canvas x:Name="stringCanvas"  Height="500" Width="1700" >
+            <Canvas.Resources>
+                <ControlTemplate x:Key="displayButton" TargetType="Button">
+                    <Grid>
+                        <Ellipse Height="30" Width="30" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding Foreground}" />
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+                
+            </Canvas.Resources>
+            <Canvas.Background>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Image x:Name="img" Source="guitar-fretboard.jpg" Stretch="Fill"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Canvas.Background>
+
+
+
+            <Canvas x:Name="sixthString" Height="80" Width="1690" Canvas.Top="76" HorizontalAlignment="Left" VerticalAlignment="Top" >
+
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30"  Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="37" Canvas.Top="33" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30"  Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="130" Canvas.Top="30" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30"  Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="250" Canvas.Top="27" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="360" Canvas.Top="25" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="465" Canvas.Top="20" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="565" Canvas.Top="20" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="655" Canvas.Top="19"/>
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="743" Canvas.Top="16" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="828" Canvas.Top="15" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="905" Canvas.Top="15" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="980" Canvas.Top="14" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1045" Canvas.Top="14" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1110" Canvas.Top="13" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1175" Canvas.Top="10" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="1235" Canvas.Top="10" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1290" Canvas.Top="10" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1337" Canvas.Top="10" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1390" Canvas.Top="5" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1430" Canvas.Top="5" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1475" Canvas.Top="4" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1515" Canvas.Top="4" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="1555" Canvas.Top="1" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1590" Canvas.Top="1" />
+
+            </Canvas>
+
+            <Canvas x:Name="fifthString" Height="80" Width="1690" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="124" >
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="37" Canvas.Top="23" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="130" Canvas.Top="23" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="250" Canvas.Top="21" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="360" Canvas.Top="20" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="465" Canvas.Top="19" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="565" Canvas.Top="19" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="655" Canvas.Top="19" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="743" Canvas.Top="18" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="828" Canvas.Top="15" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="905" Canvas.Top="15" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="980" Canvas.Top="14" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1045" Canvas.Top="14" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1110" Canvas.Top="14" />
+                                                           
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1175" Canvas.Top="13" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1235" Canvas.Top="13" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1290" Canvas.Top="12" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1337" Canvas.Top="12" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1390" Canvas.Top="11" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1430" Canvas.Top="11" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1475" Canvas.Top="10" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1515" Canvas.Top="10" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top"  Canvas.Left="1555" Canvas.Top="10"/>
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"  Canvas.Left="1590" Canvas.Top="9"/>
+
+            </Canvas>
+
+            <Canvas x:Name="fourthString" Height="80" Width="1690" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="173" >
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="37" Canvas.Top="20" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="130" Canvas.Top="21" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="250" Canvas.Top="21" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="360" Canvas.Top="21" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="465" Canvas.Top="21" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="565" Canvas.Top="21" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="655" Canvas.Top="21" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="743" Canvas.Top="19" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="828" Canvas.Top="19" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="905" Canvas.Top="19" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="980" Canvas.Top="17" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1045" Canvas.Top="17" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1110" Canvas.Top="17" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1175" Canvas.Top="17" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1235" Canvas.Top="17" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1290" Canvas.Top="17" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1337" Canvas.Top="17" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1390" Canvas.Top="17" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1430" Canvas.Top="17" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1475" Canvas.Top="15" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1515" Canvas.Top="15" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top"  Canvas.Left="1555" Canvas.Top="15"/>
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"  Canvas.Left="1590" Canvas.Top="15"/>
+
+            </Canvas>
+
+            <Canvas x:Name="thirdString" Height="80" Width="1690" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="225" >
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="37" Canvas.Top="10" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="130" Canvas.Top="10" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="250" Canvas.Top="12" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="360" Canvas.Top="12" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="465" Canvas.Top="14" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="565" Canvas.Top="14" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="655" Canvas.Top="14" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="743" Canvas.Top="16" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="828" Canvas.Top="16" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="905" Canvas.Top="16" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="980" Canvas.Top="16" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1045" Canvas.Top="17" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1110" Canvas.Top="17" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1175" Canvas.Top="18" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1235" Canvas.Top="18" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1290" Canvas.Top="18" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1337" Canvas.Top="19" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1390" Canvas.Top="20" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1430" Canvas.Top="20" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1475" Canvas.Top="20" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1515" Canvas.Top="20" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top"  Canvas.Left="1555" Canvas.Top="20"/>
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"  Canvas.Left="1590" Canvas.Top="20"/>
+
+            </Canvas>
+
+            <Canvas x:Name="secondString" Height="80" Width="1690" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="275" >
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="37" Canvas.Top="1" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="130" Canvas.Top="1" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="250" Canvas.Top="4" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="360" Canvas.Top="5" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="465" Canvas.Top="7" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="565" Canvas.Top="7" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="655" Canvas.Top="10" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="743" Canvas.Top="11" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="828" Canvas.Top="13" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="905" Canvas.Top="13" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="980" Canvas.Top="15" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1045" Canvas.Top="16" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1110" Canvas.Top="17" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1175" Canvas.Top="18" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1235" Canvas.Top="21" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1290" Canvas.Top="21" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1337" Canvas.Top="21" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1390" Canvas.Top="21" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1430" Canvas.Top="24" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1475" Canvas.Top="24" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1515" Canvas.Top="24" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top"  Canvas.Left="1555" Canvas.Top="24"/>
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"  Canvas.Left="1590" Canvas.Top="24"/>
+
+            </Canvas>
+
+            <Canvas x:Name="firstString" Height="80" Width="1690" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="320" >
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray"  HorizontalAlignment="Left" VerticalAlignment="Top"                       Canvas.Left="37"  Canvas.Top="1"   />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="130" Canvas.Top="1" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="250" Canvas.Top="5" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="360" Canvas.Top="5" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="465" Canvas.Top="7" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="565" Canvas.Top="10" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="655" Canvas.Top="13" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="743" Canvas.Top="15" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="828" Canvas.Top="15" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="905" Canvas.Top="19" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="980" Canvas.Top="20" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1045" Canvas.Top="20" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1110" Canvas.Top="22" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1175" Canvas.Top="24" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1235" Canvas.Top="24" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1290" Canvas.Top="27" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1337" Canvas.Top="27" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1390" Canvas.Top="28" />
+
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top"       Canvas.Left="1430" Canvas.Top="29" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top"       Canvas.Left="1475" Canvas.Top="29" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top"       Canvas.Left="1515" Canvas.Top="29" />
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top"       Canvas.Left="1555" Canvas.Top="29"/>
+                <Button Template="{StaticResource displayButton}" Background="DarkGray" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"  Canvas.Left="1590" Canvas.Top="29"/>
+
+            </Canvas>
+        </Canvas>
+          
+        <Canvas Grid.Row="1" Margin=" 0, 90, 0, 0" x:Name="fretNumbers" Height="80" Width="1690" >
+                <Canvas.Resources>
+                    <ControlTemplate x:Key="noDotOnFretBoard" TargetType="Button">
+                        <Grid>
+                            <Ellipse Fill="White" Stroke="White" Width="30" Height="30" />
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+
+                    </ControlTemplate>
+                   
+                    <ControlTemplate x:Key="dotOnFretBoard" TargetType="Button">
+                        <Grid >
+
+                            <Ellipse Fill="White" Stroke="Black" Height="30" Width="30" />
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        </Grid>
+                    </ControlTemplate>
+                    
+                </Canvas.Resources>
+            
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="37"  Canvas.Top="25" >0</Button>
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="130" Canvas.Top="25" >1</Button>
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="250" Canvas.Top="25" >2</Button>
+
+                <Button Template="{StaticResource dotOnFretBoard}" FontWeight="Bold" Canvas.Left="360" Canvas.Top="25" >3</Button>
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="465" Canvas.Top="25" >4</Button>
+                <Button Template="{StaticResource dotOnFretBoard}" FontWeight="Bold" Canvas.Left="565" Canvas.Top="25" >5</Button>
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="655" Canvas.Top="25" >6</Button>
+                <Button Template="{StaticResource dotOnFretBoard}" FontWeight="Bold" Canvas.Left="743" Canvas.Top="25" >7</Button>
+                       
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="828"  Canvas.Top="25">8</Button>
+            <Button Template="{StaticResource dotOnFretBoard}" FontWeight="Bold" Canvas.Left="905"  Canvas.Top="25">9</Button>
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="980"  Canvas.Top="25">10</Button>
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="1045" Canvas.Top="25">11</Button>
+            <Button Template="{StaticResource dotOnFretBoard}" FontWeight="Bold" Canvas.Left="1110" Canvas.Top="25">12</Button>
+                         
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="1175" Canvas.Top="25">13</Button>
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="1225" Canvas.Top="25">14</Button>
+            <Button Template="{StaticResource dotOnFretBoard}" FontWeight="Bold" Canvas.Left="1290" Canvas.Top="25">15</Button>
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="1337" Canvas.Top="25">16</Button>
+            <Button Template="{StaticResource dotOnFretBoard}" FontWeight="Bold" Canvas.Left="1390" Canvas.Top="25">17</Button>
+                         
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="1430" Canvas.Top="25" >18</Button>
+            <Button Template="{StaticResource dotOnFretBoard}" FontWeight="Bold" Canvas.Left="1475" Canvas.Top="25" >19</Button>
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="1515" Canvas.Top="25" >20</Button>
+            <Button Template="{StaticResource dotOnFretBoard}" FontWeight="Bold" Canvas.Left="1555" Canvas.Top="25" >21</Button>
+            <Button Template="{StaticResource noDotOnFretBoard}" FontWeight="Bold" Canvas.Left="1590" Canvas.Top="25" >22</Button>
+                        
+        </Canvas>
+        </Grid>
+
+    </Grid>
+</Window>
